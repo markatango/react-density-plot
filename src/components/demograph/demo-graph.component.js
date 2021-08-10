@@ -1,6 +1,6 @@
 import React from 'react';
 import { CanvasJSChart } from "../../lib/canvasjs.react";
-import { options } from './demo-graph.utils';
+import { graphOptions } from './demo-graph.utils';
 
 class DemoGraph extends React.Component {
     constructor(props){
@@ -12,11 +12,11 @@ class DemoGraph extends React.Component {
     }
 
     componentDidMount() {
-       this.setState({options: options});
+       this.setState({options: graphOptions});
     }
 
     render(){
-        //const { options } = this.state
+        const { options } = this.state
         return(
             <div>
                 <CanvasJSChart options={options} /> 

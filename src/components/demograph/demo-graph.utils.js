@@ -1,16 +1,43 @@
-//var chart = new CanvasJS.Chart("chartContainer",
 
-export const options = {
+const randn_bm = () => {
+	let u = 0, v = 0;
+	while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
+	while(v === 0) v = Math.random();
+	let num = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+	num = num / 10.0 + 0.5; // Translate to 0 -> 1
+	if (num > 1 || num < 0) return randn_bm() // resample between 0 and 1
+	return num
+  }
+
+const genNormalData = () => {
+	const data = []
+	const numPoints = 30;
+	for (let i=0;i<numPoints;++i){
+		data.push({x: i, y: randn_bm()})
+	}
+	return data;
+}
+
+const genUniformData = () => {
+	const data = []
+	const numPoints = 30;
+	for (let i=0;i<numPoints;++i){
+		data.push({x: i, y: Math.random()})
+	}
+	return data;
+}
+
+
+export const graphOptions = {
 	animationEnabled: true,
 	title:{
-		text: "Daily High Temperature at Different Beaches"
+		text: "Gaussian random numbers"
 	},
 	axisX: {
-		valueFormatString: "DD MMM,YY"
+		valueFormatString: "#"
 	},
 	axisY: {
-		title: "Temperature (in °C)",
-		suffix: " °C"
+		title: "Random number",
 	},
 	legend:{
 		cursor: "pointer",
@@ -20,49 +47,25 @@ export const options = {
 		shared: true
 	},
 	data: [{
-		name: "Myrtle Beach",
+		name: "Normal",
 		type: "spline",
-		yValueFormatString: "#0.## °C",
 		showInLegend: true,
-		dataPoints: [
-			{ x: new Date(2017,6,24), y: 31 },
-			{ x: new Date(2017,6,25), y: 31 },
-			{ x: new Date(2017,6,26), y: 29 },
-			{ x: new Date(2017,6,27), y: 29 },
-			{ x: new Date(2017,6,28), y: 31 },
-			{ x: new Date(2017,6,29), y: 30 },
-			{ x: new Date(2017,6,30), y: 29 }
-		]
+		dataPoints: genNormalData()
 	},
 	{
-		name: "Martha Vineyard",
+		name: "Uniform",
 		type: "spline",
-		yValueFormatString: "#0.## °C",
 		showInLegend: true,
-		dataPoints: [
-			{ x: new Date(2017,6,24), y: 20 },
-			{ x: new Date(2017,6,25), y: 20 },
-			{ x: new Date(2017,6,26), y: 25 },
-			{ x: new Date(2017,6,27), y: 25 },
-			{ x: new Date(2017,6,28), y: 25 },
-			{ x: new Date(2017,6,29), y: 25 },
-			{ x: new Date(2017,6,30), y: 25 }
-		]
+		color: "red",
+		dataPoints: genUniformData()
 	},
 	{
-		name: "Nantucket",
+		name: "More Uniform",
 		type: "spline",
-		yValueFormatString: "#0.## °C",
 		showInLegend: true,
-		dataPoints: [
-			{ x: new Date(2017,6,24), y: 22 },
-			{ x: new Date(2017,6,25), y: 19 },
-			{ x: new Date(2017,6,26), y: 23 },
-			{ x: new Date(2017,6,27), y: 24 },
-			{ x: new Date(2017,6,28), y: 24 },
-			{ x: new Date(2017,6,29), y: 23 },
-			{ x: new Date(2017,6,30), y: 23 }
-		]
+		color: "green",
+		dataPoints: genUniformData()
 	}]
+
 }
 
