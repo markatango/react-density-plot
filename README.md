@@ -1,6 +1,6 @@
 # Developing a performant density plot using CanvasJS
 
-At this stage, just a demo for generating and plotting some kinds of random numbers.
+At this stage, just a demo for generating and plotting some normal random numbers anda corresponding density plot.  It requires CanvasJS for the plots.
 
-Next work is to build the kernel density estimator using a selectable kernel function with settable width and step size.
+Next work is to bundle this into a component.
 
