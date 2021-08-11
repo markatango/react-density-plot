@@ -1,6 +1,6 @@
 import React from 'react';
 import { CanvasJSChart } from "../../lib/canvasjs.react";
-import { densityOptions } from './demo-graph.utils';
+import { densityOptions } from './demo-density.utils';
 
 class DemoDensity extends React.Component {
     constructor(props){
@@ -17,7 +17,7 @@ class DemoDensity extends React.Component {
     }
 
     render(){
-        const { options } = this.state
+        const { densityOptions } = this.state
         return(
             <div>
                 <CanvasJSChart options={densityOptions} /> 
