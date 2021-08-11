@@ -92,7 +92,7 @@ const getKDE = (data, bwFactor = 0.2, N=50) => {
 		for(let j=0;j<numDataPoints;++j){
 			kde += gkde(data[j])
 		}
-		kdeArray.push({x:i, y:kde})
+		kdeArray.push({x:mean_i, y:kde})
 	}
 	return kdeArray;
 }
@@ -138,7 +138,11 @@ export const graphOptions = {
 		showInLegend: true,
 		alpha: 0.2,
 		dataPoints: genNormalData(2000)
-	},
+	}]
+
+}
+
+/* ,
 	{
 		name: "Uniform",
 		type: "spline",
@@ -146,9 +150,7 @@ export const graphOptions = {
 		color: "red",
 		alpha: 0.2,
 		dataPoints: genUniformData(2000)
-	}]
-
-}
+	} */
 
 export const densityOptions = {
 	animationEnabled: true,
@@ -156,7 +158,7 @@ export const densityOptions = {
 		text: "Random density plots"
 	},
 	axisX: {
-		valueFormatString: "#"
+		valueFormatString: "#.##"
 	},
 	axisY: {
 		title: "Random number",
@@ -173,14 +175,16 @@ export const densityOptions = {
 		type: "spline",
 		showInLegend: true,
 		dataPoints: getKDE(extractYFromData(genNormalData(2000)))
-	},
+	}]
+
+/* 	,
 	{
 		name: "Uniform",
 		type: "spline",
 		showInLegend: true,
 		color: "red",
 		dataPoints: getKDE(extractYFromData(genUniformData(2000)))
-	}]
-
+	}
+ */
 }
 
