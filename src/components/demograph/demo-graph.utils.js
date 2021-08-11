@@ -1,5 +1,6 @@
 
 const randn_bm = () => {
+	/** Thank you https://stackoverflow.com/questions/25582882/javascript-math-random-normal-distribution-gaussian-bell-curve */
 	let u = 0, v = 0;
 	while(u === 0) u = Math.random(); //Converting [0,1) to (0,1)
 	while(v === 0) v = Math.random();
@@ -41,6 +42,7 @@ const getMean = (data) =>{
 }
 
 const getStd = (data) =>{
+	/**Thank you https://www.geeksforgeeks.org/how-to-get-the-standard-deviation-of-an-array-of-numbers-using-javascript/ */
 	let mean = getMean(data);
 	data = data.map((k)=>{return (k - mean) ** 2 })
 	let sum = data.reduce((acc, curr)=> acc + curr, 0);
