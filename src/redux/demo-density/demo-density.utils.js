@@ -3,10 +3,10 @@ import { getData } from '../../utils/stat.utils.js';
 export const densityOptions = {
 	animationEnabled: false,
 	title:{
-		text: "Random density plots"
+		text: "Density"
 	},
 	axisX: {
-		valueFormatString: "#.##"
+		valueFormatString: "#"
 	},
 	axisY: {
 		title: "Random number",
@@ -20,9 +20,12 @@ export const densityOptions = {
 	},
 	data: [{
 		name: "Normal",
-		type: "spline",
+		type: "scatter",
 		showInLegend: true,
-		dataPoints: getData('gaussian', 2000)
+		markerType: "circle",
+		alpha: 0.2,
+		color: "blue",
+		dataPoints: getData('normal', 2000)
 	}]
-}
 
+}

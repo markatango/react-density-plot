@@ -1,29 +1,34 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
 import { CanvasJSChart } from "../../lib/canvasjs.react";
-import { densityOptions } from './demo-density.utils';
+import { connect } from 'react-redux';
+
+import { selectOptions } from '../../redux/demo-density/demo-density.selectors';
+import { getOptionsStart } from '../../redux/demo-density/demo-density.actions';
 
 class DemoDensity extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            data: [],
-            graphOptions : {},
-            densityOptions : {}
-        }
-    }
 
     componentDidMount() {
-       this.setState({densityOptions: densityOptions});
+        const { getOptionsStart } = this.props;
+        getOptionsStart();
     }
 
     render(){
-        const { densityOptions } = this.state
+        const { options } = this.props;
         return(
             <div>
-                <CanvasJSChart options={densityOptions} /> 
+                <CanvasJSChart options={options} /> 
             </div>
         )
     }
 }
 
-export default DemoDensity;
+const mapStateToProps = createStructuredSelector({
+    options : selectOptions
+})
+
+const mapDispatchToProps = dispatch => ({
+    getOptionsStart :  () => dispatch(getOptionsStart())
+}); 
+
+export default connect(mapStateToProps, mapDispatchToProps)(DemoDensity);

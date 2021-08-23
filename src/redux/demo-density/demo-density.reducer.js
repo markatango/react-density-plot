@@ -1,6 +1,4 @@
-import { getData } from '../..generic-graph.actions';
-import { graphActions } from '../generic-graph.types';
-
+import { demoDensityActionTypes } from './demo-density.types';
 
 const INITIAL_STATE = {
     data: [],
@@ -8,21 +6,29 @@ const INITIAL_STATE = {
     error: ''
 };
   
-const demoGraphReducer = (state = INITIAL_STATE, action) => {
+const demoDensityReducer = (state = INITIAL_STATE, action) => {
 switch (action.type) {
-    case graphActions.GET_DATA_SUCCESS:
+    case demoDensityActionTypes.GET_DATA_SUCCESS:
       return {
         ...state,
-        data: action.payload
+        data: action.payload,
+        error: ''
       };
 
-    case graphActions.GET_OPTIONS_SUCCESS:
+    case demoDensityActionTypes.GET_DATA_FAILURE:
     return {
         ...state,
-        options: action.payload
+        error: action.payload
     };
 
-    case graphActions.GET_OPTIONS_FAILURE:
+    case demoDensityActionTypes.GET_OPTIONS_SUCCESS:
+    return {
+        ...state,
+        options: action.payload,
+        error: ''
+    };
+
+    case demoDensityActionTypes.GET_OPTIONS_FAILURE:
     return {
         ...state,
         error: action.payload
@@ -33,4 +39,4 @@ switch (action.type) {
   }
 };
 
-export default demoGraphReducer;
+export default demoDensityReducer;
