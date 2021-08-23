@@ -1,11 +1,10 @@
 import './App.css';
-import DemoGraph from './components/demograph/demo-graph.component';
-import DemoDensity from './components/demodensity/demo-density.component';
+import DemoDisplay from './pages/demodisplay/demo-display.component';
+
 
 const App = () => (
     <div>
-      <DemoGraph />
-      <DemoDensity />
+      <DemoDisplay />
     </div>
    );
 

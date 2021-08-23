@@ -8,7 +8,7 @@ import { getOptionsStart } from '../../redux/demo-density/demo-density.actions';
 
 class DemoDensity extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         const { getOptionsStart } = this.props;
         getOptionsStart();
     }

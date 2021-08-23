@@ -8,13 +8,14 @@ import { getOptionsStart } from '../../redux/demo-graph/demo-graph.actions';
 
 class DemoGraph extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         const { getOptionsStart } = this.props;
         getOptionsStart();
     }
 
     render(){
         const { options } = this.props;
+        console.log(options);
         return(
             <div>
                 <CanvasJSChart options={options} /> 

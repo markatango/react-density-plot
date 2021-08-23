@@ -1,26 +1,16 @@
 
 import { demoGraphActionTypes } from './demo-graph.types';
+import { graphOptions } from './demo-graph.utils';
+
 
 const INITIAL_STATE = {
     data: [],
-    options: {},
+    options: graphOptions,
     error: ''
 };
   
 const demoGraphReducer = (state = INITIAL_STATE, action) => {
 switch (action.type) {
-    case demoGraphActionTypes.GET_DATA_SUCCESS:
-      return {
-        ...state,
-        data: action.payload,
-        error: ''
-      };
-
-    case demoGraphActionTypes.GET_DATA_FAILURE:
-    return {
-        ...state,
-        error: action.payload
-    };
 
     case demoGraphActionTypes.GET_OPTIONS_SUCCESS:
     return {

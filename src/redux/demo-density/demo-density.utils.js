@@ -1,5 +1,3 @@
-import { getData } from '../../utils/stat.utils.js';
-
 export const densityOptions = {
 	animationEnabled: false,
 	title:{
@@ -25,7 +23,7 @@ export const densityOptions = {
 		markerType: null,
 		alpha: 0.2,
 		color: "blue",
-		dataPoints: getData('normal', 2000)
+		dataPoints: []
 	}]
 
 }

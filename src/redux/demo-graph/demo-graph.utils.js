@@ -1,5 +1,3 @@
-import { getData } from '../../utils/stat.utils.js';
-
 export const graphOptions = {
 	animationEnabled: false,
 	title:{
@@ -25,7 +23,7 @@ export const graphOptions = {
 		markerType: "circle",
 		alpha: 0.2,
 		color: "blue",
-		dataPoints: getData('normal', 2000)
+		dataPoints: []
 	}]
 
 }

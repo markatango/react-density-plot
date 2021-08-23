@@ -1,6 +1,8 @@
 // combines all code for all reducers
 import demoGraphReducer from './demo-graph/demo-graph.reducer';
 import demoDensityReducer from './demo-density/demo-density.reducer';
+import demoDisplayReducer from './demo-display/demo-display.reducer';
+
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 
@@ -14,12 +16,13 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['demo-graph','demo-density'  ]
+    whitelist: ['demo-graph', 'demo-density', 'demo-display']
 }
 
 const rootReducer = combineReducers({
     demograph: demoGraphReducer,
-    demodensity: demoDensityReducer
+    demodensity: demoDensityReducer,
+    demodata: demoDisplayReducer
 })
 
 export default persistReducer( persistConfig, rootReducer );

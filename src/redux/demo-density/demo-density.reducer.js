@@ -1,26 +1,14 @@
 import { demoDensityActionTypes } from './demo-density.types';
+import { densityOptions } from './demo-density.utils';
 
 const INITIAL_STATE = {
-    data: [],
-    options: {},
+    options: densityOptions,
     error: ''
 };
   
 const demoDensityReducer = (state = INITIAL_STATE, action) => {
 switch (action.type) {
-    case demoDensityActionTypes.DENSITY_DATA_SUCCESS:
-      return {
-        ...state,
-        data: action.payload,
-        error: ''
-      };
-
-    case demoDensityActionTypes.DENSITY_DATA_FAILURE:
-    return {
-        ...state,
-        error: action.payload
-    };
-
+ 
     case demoDensityActionTypes.DENSITY_OPTIONS_SUCCESS:
     return {
         ...state,
