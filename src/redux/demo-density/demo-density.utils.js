@@ -6,10 +6,10 @@ export const densityOptions = {
 		text: "Density"
 	},
 	axisX: {
-		valueFormatString: "#"
+		valueFormatString: "#.##"
 	},
 	axisY: {
-		title: "Random number",
+		title: "Density",
 	},
 	legend:{
 		cursor: "pointer",
@@ -20,9 +20,9 @@ export const densityOptions = {
 	},
 	data: [{
 		name: "Normal",
-		type: "scatter",
+		type: "line",
 		showInLegend: true,
-		markerType: "circle",
+		markerType: null,
 		alpha: 0.2,
 		color: "blue",
 		dataPoints: getData('normal', 2000)
