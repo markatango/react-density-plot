@@ -8,12 +8,12 @@ import { getOptionsStart } from '../../redux/demo-graph/demo-graph.actions';
 
 class DemoGraph extends React.Component {
 
-    componentWillMount() {
-        const { getOptionsStart } = this.props;
-        getOptionsStart();
+    componentDidMount() {
     }
 
     render(){
+        const { getOptionsStart } = this.props;
+        getOptionsStart();
         const { options } = this.props;
         console.log(options);
         return(
