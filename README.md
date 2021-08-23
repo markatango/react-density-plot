@@ -11,6 +11,7 @@ The demo was developed and tested with these engines:
 
 ##### To run demo:
 1. Clone repo to `<path>`
-2. cd to `<path>`
-3. `npm start`
+2. `cd <path>`
+3. `npm install`
+4. `npm start`
   
