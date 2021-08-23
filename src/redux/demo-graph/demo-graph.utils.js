@@ -1,4 +1,4 @@
-import { genNormalData } from '../../utils/stat.utils.js';
+import { getData } from '../../utils/stat.utils.js';
 
 export const graphOptions = {
 	animationEnabled: false,
@@ -25,7 +25,7 @@ export const graphOptions = {
 		markerType: "circle",
 		alpha: 0.2,
 		color: "blue",
-		dataPoints: genNormalData(2000)
+		dataPoints: getData('normal', 2000)
 	}]
 
 }

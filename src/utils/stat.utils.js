@@ -9,6 +9,13 @@ const randn_bm = () => {
 	return num
 }
 
+export const getData = (dataType, length) => {
+	return {
+		normal: genNormalData(length),
+		gaussian: genUniformData(length)
+	}[dataType]
+}
+
 export const genNormalData = (numPts=30) => {
 	const data = []
 	const numPoints = numPts;

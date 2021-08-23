@@ -1,22 +1,20 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
 import { CanvasJSChart } from "../../lib/canvasjs.react";
-import { graphOptions } from './demo-graph.utils';
+import { connect } from 'react-redux';
+
+import { selectOptions } from '../../redux/demo-graph/demo-graph.selectors';
+import { getOptionsStart } from '../../redux/demo-graph/demo-graph.actions';
 
 class DemoGraph extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            data: [],
-            options : {}
-        }
-    }
 
     componentDidMount() {
-       this.setState({options: graphOptions});
+        const { getOptionsStart } = this.props;
+        getOptionsStart();
     }
 
     render(){
-        const { options } = this.state
+        const { options } = this.props;
         return(
             <div>
                 <CanvasJSChart options={options} /> 
@@ -25,4 +23,12 @@ class DemoGraph extends React.Component {
     }
 }
 
-export default DemoGraph;
+const mapStateToProps = createStructuredSelector({
+    options : selectOptions
+})
+
+const mapDispatchToProps = dispatch => ({
+    getOptionsStart :  () => dispatch(getOptionsStart())
+}); 
+
+export default connect(mapStateToProps, mapDispatchToProps)(DemoGraph);

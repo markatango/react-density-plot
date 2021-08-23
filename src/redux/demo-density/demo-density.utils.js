@@ -1,4 +1,4 @@
-import { genNormalData, getKDE, extractYFromData   } from '../../utils/stat.utils.js';
+import { getData } from '../../utils/stat.utils.js';
 
 export const densityOptions = {
 	animationEnabled: false,
@@ -22,7 +22,7 @@ export const densityOptions = {
 		name: "Normal",
 		type: "spline",
 		showInLegend: true,
-		dataPoints: getKDE(extractYFromData(genNormalData(2000)))
+		dataPoints: getData('gaussian', 2000)
 	}]
 }
 
