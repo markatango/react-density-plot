@@ -6,7 +6,7 @@ const selectDemoDensity = state => state.demodensity;
 
 // output selector that uses the input selector to get a piece of the store.
 export const selectData = createSelector(
-    [], 
+    [selectDemoDensity], 
     (demodensity) => demodensity.data
     );
 
@@ -17,11 +17,11 @@ export const selectOptions = createSelector(
     );
 
 /* export const selectIsDataFetching = createSelector(
-    [selectDemoGraph],
-    (demograph) => demograph.selectIsDataFetching
+    [selectDemoDensity],
+    (demodensity) => demodensity.selectIsDataFetching
 )
  */
 /* export const selectIsDataLoaded = createSelector(
-    [selectDemoGraph],
-    (demograph) => !!demograph.data
+    [selectDemoDensity],
+    (demodensity) => !!demodensity.data
 ) */

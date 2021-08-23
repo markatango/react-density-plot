@@ -1,5 +1,5 @@
 import { takeLatest, put } from 'redux-saga/effects';
-import { getData, getKde } from '../../utils/stat.utils';
+import { getData } from '../../utils/stat.utils';
 import { graphOptions } from './demo-graph.utils';
 import { demoGraphActionTypes } from './demo-graph.types';
 
@@ -24,7 +24,7 @@ export function* getOptionsAsync(){
     const options = graphOptions;
 
     try{
-        options.data[0].dataPoints = yield  getKde(getData('normal', 1000));
+        options.data[0].dataPoints = yield  getData('normal', 1000);
         yield put(getOptionsSuccess(options))
     } catch (errorMessage) {
         yield put(getOptionsFailure(errorMessage))

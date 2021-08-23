@@ -1,6 +1,6 @@
 import { takeLatest, put } from 'redux-saga/effects';
-import { getData } from '../../utils/stat.utils';
-import { graphOptions } from './demo-density.utils';
+import { getData, getKDE, extractYFromData } from '../../utils/stat.utils';
+import { densityOptions } from './demo-density.utils';
 import { demoDensityActionTypes } from './demo-density.types';
 
 import { 
@@ -21,26 +21,27 @@ export function* getDataAsync(){
 };
 
 export function* getOptionsAsync(){
-    const options = graphOptions;
+    const options = densityOptions;
 
     try{
-        options.data[0].dataPoints = yield  getData('normal', 1000);
+        options.data[0].dataPoints = yield  getKDE(extractYFromData(getData('normal', 1000)));
         yield put(getOptionsSuccess(options))
     } catch (errorMessage) {
         yield put(getOptionsFailure(errorMessage))
     }
 }
     
-export function* getDataStart(){
+export function* getDensityStart(){
     yield takeLatest(
-        demoDensityActionTypes.GET_DATA_START,
+        demoDensityActionTypes.DENSITY_DATA_START,
         getDataAsync
     )
 };
 
-export function* getOptionsStart(){
+export function* getDensityOptionsStart(){
     yield takeLatest(
-        demoDensityActionTypes.GET_OPTIONS_START,
+        demoDensityActionTypes.DENSITY_OPTIONS_START,
         getOptionsAsync
     )
 }
+
