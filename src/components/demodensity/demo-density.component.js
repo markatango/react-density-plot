@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
-import { CanvasJSChart } from "../../lib/canvasjs.react";
+//import { CanvasJSChart } from "../../lib/canvasjs.react";
+import  CanvasJSReact  from "../../lib/canvasjs.react";
 import { connect } from 'react-redux';
 
 import { selectOptions } from '../../redux/demo-density/demo-density.selectors';
@@ -21,6 +22,7 @@ class DemoDensity extends React.Component {
         const { options, data } = this.props;
         options.data[0].dataPoints = getKDE(extractYFromData(data))  ;
         const newOptions = Object.assign({},{...options})
+        const { CanvasJSChart } = CanvasJSReact; // free version
         return(
             <div>
                 <CanvasJSChart options={newOptions} /> 
