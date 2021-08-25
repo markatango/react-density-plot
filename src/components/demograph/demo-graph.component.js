@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
-import { CanvasJSChart } from "../../lib/canvasjs.react";
+//import { CanvasJSChart } from "../../lib/canvasjs.react";
+import  CanvasJSReact  from "../../lib/canvasjs.react";
 import { connect } from 'react-redux';
 
 import { selectOptions } from '../../redux/demo-graph/demo-graph.selectors';
@@ -18,8 +19,7 @@ class DemoGraph extends React.Component {
         const { options, data } = this.props;
         options.data[0].dataPoints = data;
         const newOptions = Object.assign({},{...options})
-    //
-        console.log(newOptions);
+        const { CanvasJSChart } = CanvasJSReact; // free version
         return(
             <div>
                 <CanvasJSChart options={newOptions} /> 
