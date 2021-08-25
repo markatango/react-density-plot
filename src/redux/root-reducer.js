@@ -13,10 +13,16 @@ import storage from 'redux-persist/lib/storage';
 //import sessionStorage from 'redux-persist/lib/somewhere else
 
 // persist the cart; it's the reducer that changes state frequently due to user action. user is persisted by firebase.
-const persistConfig = {
+/* const persistConfig = {
     key: 'root',
     storage,
     whitelist: ['demo-graph', 'demo-density', 'demo-display']
+} */
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: []
 }
 
 const rootReducer = combineReducers({

@@ -6,7 +6,8 @@ import DemoDensity from '../../components/demodensity/demo-density.component';
 import DemoGraph from '../../components/demograph/demo-graph.component';
 
 import { selectData } from '../../redux/demo-display/demo-display.selectors';
-import { getDataStart } from '../../redux/demo-display/demo-display.actions';
+import { getDataStart } from '../../redux/demo-display/demo-display.actions'
+
 //import { render } from '@testing-library/react';
 
 class DemoDisplay extends React.Component {
@@ -14,9 +15,10 @@ class DemoDisplay extends React.Component {
     componentDidMount(){
         const { getDataStart } = this.props;
         getDataStart();
-    }
+    } 
 
     render() {
+        
         const { data } = this.props;
         return(
             <div>
@@ -29,7 +31,7 @@ class DemoDisplay extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
     data : selectData
-});
+}); 
 
 const mapDispatchToProps = dispatch => ({
     getDataStart :  () => dispatch(getDataStart())
