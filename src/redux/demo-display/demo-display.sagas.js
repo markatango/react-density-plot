@@ -9,7 +9,7 @@ import {
 
 export function* getDataAsync(){
     try{
-        const data = yield getData('normal', 1000);
+        const data = yield getData('uniform', 1000);
         yield put(getDataSuccess(data))
     } catch (errorMessage) {
         yield put(getDataFailure(errorMessage))
