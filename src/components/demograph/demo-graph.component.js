@@ -20,6 +20,7 @@ class DemoGraph extends React.Component {
         options.data[0].dataPoints = data;
         const newOptions = Object.assign({},{...options})
         const { CanvasJSChart } = CanvasJSReact; // free version
+    
         return(
             <div>
                 <CanvasJSChart options={newOptions} /> 
