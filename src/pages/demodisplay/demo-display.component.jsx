@@ -2,6 +2,7 @@ import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 
+import DataTypeSelector from '../../components/datatype/data-type.component';
 import DemoDensity from '../../components/demodensity/demo-density.component';
 import DemoGraph from '../../components/demograph/demo-graph.component';
 
@@ -22,9 +23,15 @@ class DemoDisplay extends React.Component {
         const { data } = this.props;
         return(
             <div>
-                <DemoGraph data={data}/>
-                <DemoDensity data={data}/>
+                 <div>
+                    <DataTypeSelector />
+                </div>
+                <div>
+                    <DemoGraph data={data}/>
+                    <DemoDensity data={data}/>
+                </div>
             </div>
+           
         )
     }
 }
