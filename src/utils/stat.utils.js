@@ -12,7 +12,7 @@ const randn_bm = () => {
 export const getData = (dataType, length) => {
 	return {
 		normal: genNormalData(length),
-		gaussian: genUniformData(length)
+		uniform: genUniformData(length)
 	}[dataType]
 }
 
