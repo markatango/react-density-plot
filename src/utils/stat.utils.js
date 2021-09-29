@@ -17,20 +17,24 @@ export const getData = (dataType, length) => {
 }
 
 export const genNormalData = (numPts=30) => {
+	console.log(`genNormalData(${numPts})`)
 	const data = []
 	const numPoints = numPts;
 	for (let i=0;i<numPoints;++i){
 		data.push({x: i, y: randn_bm()})
 	}
+	console.log(`data[0]: ${JSON.stringify(data[0])}`)
 	return data;
 }
 
 export const genUniformData = (numPts=30) => {
+	console.log(`genUniformData(${numPts})`)
 	const data = []
 	const numPoints = numPts;
 	for (let i=0;i<numPoints;++i){
 		data.push({x: i, y: Math.random()})
 	}
+	console.log(`data[0]: ${JSON.stringify(data[0])}`)
 	return data;
 }
 

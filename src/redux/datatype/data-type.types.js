@@ -1,5 +1,0 @@
-export const dataTypes = {
-    GET_TYPE_START : 'GET_TYPE_START',
-    GET_TYPE_SUCCESS : 'GET_TYPE_START',
-    GET_tYPE_FAILURE : 'GET_TYPE_START',
-}
