@@ -29,6 +29,10 @@ class DataTypeSelector extends React.Component {
             <input type="radio" value="normal" id="normal"
               onClick={this.handleChange}  name="datatype" defaultChecked={this.state.datatype ==="normal"}/>
             <label form="datatype">Normal</label>
+
+            <input type="radio" value="poisson" id="poisson"
+              onClick={this.handleChange}  name="datatype" defaultChecked={this.state.datatype ==="poisson"}/>
+            <label form="datatype">Poisson</label>
          </form>
       </div>
     );

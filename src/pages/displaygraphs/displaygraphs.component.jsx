@@ -45,14 +45,16 @@ class DisplayGraphs extends Component {
 
     const options1 = cloneDeep(this.defaultOptions);
     options1.data[0].dataPoints = this.props.data;
-    options1.data[0].type = "line";
+    options1.data[0].type = "scatter";
     options1.data[0].name = "";
+    options1.data[0].markerType = "circle";
     options1.title.text = options1.axisY.title = this.props.c1Name
 
     const options2 = cloneDeep(this.defaultOptions);
     options2.data[0].dataPoints = getKDE(extractYFromData(this.props.data));
     options2.data[0].type = "line";
     options2.data[0].name = "";
+    options2.data[0].markerType = null;
     options2.title.text = options2.axisY.title = this.props.c2Name
 
     var charts = this.charts;

@@ -20,7 +20,7 @@ export const defaultOptions = {
 		name: "Normal",
 		type: "line",
 		showInLegend: true,
-		markerType: null,
+		markerType: "circle",
 		alpha: 0.2,
 		color: "blue",
 		dataPoints: []
