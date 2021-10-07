@@ -12,25 +12,50 @@ const randn_bm = () => {
 export const getData = (dataType, length) => {
 	return {
 		normal: genNormalData(length),
-		uniform: genUniformData(length)
+		uniform: genUniformData(length),
+		poisson: genPoissonData(length)
 	}[dataType]
 }
 
 export const genNormalData = (numPts=30) => {
+	console.log(`genNormalData(${numPts})`)
 	const data = []
 	const numPoints = numPts;
 	for (let i=0;i<numPoints;++i){
 		data.push({x: i, y: randn_bm()})
 	}
+	console.log(`data[0]: ${JSON.stringify(data[0])}`)
 	return data;
 }
 
 export const genUniformData = (numPts=30) => {
+	console.log(`genUniformData(${numPts})`)
 	const data = []
 	const numPoints = numPts;
 	for (let i=0;i<numPoints;++i){
 		data.push({x: i, y: Math.random()})
 	}
+	console.log(`data[0]: ${JSON.stringify(data[0])}`)
+	return data;
+}
+
+export const genPoissonData = (numPts=30) => {
+	//console.log(`genPoissonData(${numPts})`)
+	const data = []
+	const numPoints = numPts;
+	const L = Math.exp(-7)
+	console.log(L)
+	for (let i=0;i<numPoints;++i){
+		let p = 1
+		let k = 0
+		do {
+			k += 1
+			p *= Math.random()
+			console.log(p)
+		} while (p > L);
+		data.push({x: i, y: k-1 })
+	}
+	console.log(`data[0]: ${JSON.stringify(data[0])}`)
 	return data;
 }
 
@@ -92,7 +117,7 @@ const normalizeObjectOfXY = xyData => {
 	return xyData.map(d => ({...d, y:d.y/scale}));
 }
 
-export const getKDE = (data, bwFactor = 0.2, N=50) => {
+export const getKDE = (data, bwFactor = 0.2, N=100) => {
 
 	const kdeArray = []
 	const { min, max } = getLimits(data);

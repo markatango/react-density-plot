@@ -1,7 +1,5 @@
 // combines all code for all reducers
-import demoGraphReducer from './demo-graph/demo-graph.reducer';
-import demoDensityReducer from './demo-density/demo-density.reducer';
-import demoDisplayReducer from './demo-display/demo-display.reducer';
+import dataReducer from './data/data.reducer';
 
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
@@ -26,9 +24,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-    demograph: demoGraphReducer,
-    demodensity: demoDensityReducer,
-    demodata: demoDisplayReducer
+    data: dataReducer
 })
 
 export default persistReducer( persistConfig, rootReducer );
