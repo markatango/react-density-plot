@@ -136,7 +136,7 @@ export const getKDE = (data, bwFactor = 0.2, N=100) => {
 		for(let j=0;j<numDataPoints;++j){
 			kde += gkde(data[j])
 		}
-		kdeArray.push({x:mean_i, y:kde})
+		kdeArray.push({y:mean_i, x:kde})
 	}
 	return normalizeObjectOfXY(kdeArray);
 }
