@@ -113,8 +113,8 @@ const gaussianKernelFunc = (mean, bw) => {
 } */
 
 const normalizeObjectOfXY = xyData => {
-	const scale = xyData.reduce((accume, d) => accume + d.y, 0);
-	return xyData.map(d => ({...d, y:d.y/scale}));
+	const scale = xyData.reduce((accume, d) => accume + d.x, 0);
+	return xyData.map(d => ({...d, x:d.x/scale}));
 }
 
 export const getKDE = (data, bwFactor = 0.2, N=100) => {
