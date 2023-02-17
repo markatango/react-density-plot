@@ -1,5 +1,5 @@
 import { takeLatest, put } from 'redux-saga/effects';
-import { getData } from '../../utils/stat.utils';
+import { getData } from '../../utils/data.source';
 import { dataActionTypes } from './data.types';
 
 import { 

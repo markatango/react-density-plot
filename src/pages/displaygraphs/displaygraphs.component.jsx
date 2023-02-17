@@ -20,28 +20,6 @@ class DisplayGraphs extends Component {
   }
 
   render() {
-    /* const options1 = {
-      title: {
-        text: this.props.c1Name
-      },
-      data: [
-        {
-          type: "line",
-          dataPoints: this.props.data
-        }
-      ]
-    };
-    const options2 = {
-      title: {
-        text: this.props.c2Name
-      },
-      data: [
-        {
-          type: "line",
-          dataPoints: getKDE(extractYFromData(this.props.data))
-        }
-      ]
-    }; */
 
     const theme = "dark1";
     const markerColor = "yellow"
@@ -50,7 +28,8 @@ class DisplayGraphs extends Component {
     options1.data[0].type = "scatter";
     options1.data[0].name = "";
     options1.data[0].markerType = "circle";
-    options1.title.text = options1.axisY.title = this.props.c1Name
+    options1.title.text = this.props.c1Name
+    options1.axisY.title = ""
     options1.theme = theme
     options1.data[0].markerColor = markerColor
     options1.data[0].markerBorderColor = "darkblue"
@@ -61,7 +40,8 @@ class DisplayGraphs extends Component {
     options2.data[0].type = "line";
     options2.data[0].name = "";
     options2.data[0].markerType = null;
-    options2.title.text = options2.axisY.title = this.props.c2Name
+    options2.title.text = this.props.c2Name
+    options2.axisY.title = ""
     options2.theme = theme
     options2.data[0].lineColor = markerColor
 
@@ -77,7 +57,7 @@ class DisplayGraphs extends Component {
           <div className="col-12">
          <h2 style={{textAlign: "center"}}>Kernel Density Estimator Demo</h2> 
          </div>
-         <div className="col-6">
+         <div className="col-10">
             <CanvasJSChart
               options={options1}
               onRef={ref => this.charts.push(ref)}

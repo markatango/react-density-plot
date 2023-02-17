@@ -1,8 +1,8 @@
 import { dataActionTypes } from './data.types';
-import { getData } from '../../utils/stat.utils';
+import { getData } from '../../utils/data.source';
 
 const INITIAL_STATE = {
-    data: getData("normal",1000),
+    data: getData("normal",30),
     type: "normal",
     error: ''
 };
