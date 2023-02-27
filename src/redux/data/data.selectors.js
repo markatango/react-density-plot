@@ -8,3 +8,13 @@ export const selectData = createSelector(
     [selectDataInput], 
     (data) => data.data
 );
+
+export const selectNumberPoints = createSelector(
+    [selectDataInput], 
+    (data) => data.numberPoints
+);
+
+export const selectDataType = createSelector(
+    [selectDataInput], 
+    (data) => data.dataType
+);

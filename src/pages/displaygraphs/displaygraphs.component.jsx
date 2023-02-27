@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectData } from '../../redux/data/data.selectors';
+import { selectData, selectNumberPoints } from '../../redux/data/data.selectors';
 import { getKDE, extractYFromData } from '../../utils/stat.utils';
 import { defaultOptions } from './options.default';
 
@@ -77,7 +77,8 @@ class DisplayGraphs extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  data : selectData
+  data : selectData,
+  numberPoints: selectNumberPoints
 })
 
 export default connect(mapStateToProps, null)(DisplayGraphs); 
