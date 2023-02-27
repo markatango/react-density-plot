@@ -7,9 +7,10 @@ import {
     getDataFailure
  } from './data.actions';
 
-export function* getDataAsync({ payload }){
+export function* getDataAsync({ payload:{gtype, glength} }){
+    console.log(`gtype: ${gtype} glength: ${glength}`)
     try{
-        const data = yield getData(payload, 1000);
+        const data = yield getData(gtype, glength);
         yield put(getDataSuccess(data))
     } catch (errorMessage) {
         yield put(getDataFailure(errorMessage))

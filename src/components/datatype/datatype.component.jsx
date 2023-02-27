@@ -1,20 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getDataStart } from '../../redux/data/data.actions'
+import { createStructuredSelector } from 'reselect';
+import { getDataStart, setNumberPoints, setDataType } from '../../redux/data/data.actions'
+import { selectDataType, selectNumberPoints } from '../../redux/data/data.selectors';
 
 class DataTypeSelector extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            datatype:"normal"
-            };
-        }
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         datatype:"normal"
+    //         };
+    //     }
+
+  getTheData = () => ({})
 
   handleChange = (e)=>{
     console.log(`datatype: ${e.target.value}`)
-    this.props.getDataStart(e.target.value);
-    this.setState({datatype:e.target.value})
+    console.log(`datalength: ${this.props.numberPoints}`)
+    this.props.setDataType(e.target.value)
+    const datatypeAndLength = {gtype: e.target.value, glength:this.props.numberPoints}
+    this.props.getDataStart(datatypeAndLength);
     
+  }
+
+  handleNumberPointsChange = (e)=>{
+    console.log(`numberOfPoints: ${e.target.value}`)
+    this.props.setNumberPoints(e.target.value);
+    const datatypeAndLength = {gtype: this.props.dataType, glength:e.target.value}
+    this.props.getDataStart(datatypeAndLength);
   }
 
   render() {
@@ -23,26 +36,39 @@ class DataTypeSelector extends React.Component {
         <h3>Select data distribution type </h3>
          <form>
             <input type="radio" value="uniform" id="uniform"
-              onClick={this.handleChange} name="datatype" defaultChecked={this.state.datatype ==="uniform"}/>
+              onClick={this.handleChange} name="datatype" defaultChecked={this.props.dataType ==="uniform"}/>
             <label form="datatype">Uniform</label>
 
             <input type="radio" value="normal" id="normal"
-              onClick={this.handleChange}  name="datatype" defaultChecked={this.state.datatype ==="normal"}/>
+              onClick={this.handleChange}  name="datatype" defaultChecked={this.props.dataType ==="normal"}/>
             <label form="datatype">Normal</label>
 
             <input type="radio" value="poisson" id="poisson"
-              onClick={this.handleChange}  name="datatype" defaultChecked={this.state.datatype ==="poisson"}/>
+              onClick={this.handleChange}  name="datatype" defaultChecked={this.props.dataType ==="poisson"}/>
             <label form="datatype">Poisson</label>
-         </form>
+            </form>
+
+            <form>
+            <input type="number" value={this.props.numberPoints} id="numpoints"
+              onChange={this.handleNumberPointsChange}  name="numpoints"/>
+            <label form="numpoints">Number of points</label>
+            </form>
+         
       </div>
     );
   }
 
 
 }
+const mapStateToProps = createStructuredSelector({
+  numberPoints: selectNumberPoints,
+  dataType: selectDataType
+})
 
 const mapDispatchToProps = dispatch => ({
-  getDataStart: (graphtype) => dispatch(getDataStart(graphtype))
+  getDataStart: (datatypeAndLength) => dispatch(getDataStart(datatypeAndLength)),
+  setNumberPoints: (numberOfPoints) => dispatch(setNumberPoints(numberOfPoints)),
+  setDataType: (type) => dispatch(setDataType(type))
 });  
 
-export default connect(null,mapDispatchToProps)(DataTypeSelector);
+export default connect(mapStateToProps,mapDispatchToProps)(DataTypeSelector);

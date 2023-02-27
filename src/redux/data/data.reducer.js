@@ -3,7 +3,8 @@ import { getData } from '../../utils/data.source';
 
 const INITIAL_STATE = {
     data: getData("normal",30),
-    type: "normal",
+    dataType: "normal",
+    numberPoints: 30,
     error: ''
 };
   
@@ -21,6 +22,22 @@ switch (action.type) {
     return {
         ...state,
         error: action.payload
+    };
+
+    case dataActionTypes.SET_DATA_TYPE:
+      console.log(action.payload)
+    return {
+        ...state,
+        dataType: action.payload,
+        error: ''
+    };
+
+    case dataActionTypes.SET_NUMBER_POINTS:
+      console.log(action.payload)
+    return {
+        ...state,
+        numberPoints: action.payload,
+        error: ''
     };
       
     default:
