@@ -9,10 +9,13 @@ class App extends React.Component {
   render(){
 
     return (
+      <div>
         <div>
-          <DataTypeSelector />
+          <DataTypeSelector  />
           <DisplayGraphs c1Name={"Data"} c2Name={"Density"}/>
         </div>
+      </div>
+
     )
   }
 }

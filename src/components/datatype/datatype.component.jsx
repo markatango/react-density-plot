@@ -34,26 +34,32 @@ class DataTypeSelector extends React.Component {
     return (
       <div>
         <h3>Select data distribution type </h3>
-         <form>
+        <form>
+          <div>
             <input type="radio" value="uniform" id="uniform"
               onClick={this.handleChange} name="datatype" defaultChecked={this.props.dataType ==="uniform"}/>
             <label form="datatype">Uniform</label>
-
+          </div>
+            
+          <div>
             <input type="radio" value="normal" id="normal"
               onClick={this.handleChange}  name="datatype" defaultChecked={this.props.dataType ==="normal"}/>
             <label form="datatype">Normal</label>
+          </div>
 
+          <div>
             <input type="radio" value="poisson" id="poisson"
               onClick={this.handleChange}  name="datatype" defaultChecked={this.props.dataType ==="poisson"}/>
             <label form="datatype">Poisson</label>
-            </form>
+          </div>
+        </form>
 
-            <form>
+        <form>
             <input type="number" value={this.props.numberPoints} id="numpoints"
               onChange={this.handleNumberPointsChange}  name="numpoints"/>
             <label form="numpoints">Number of points</label>
-            </form>
-         
+        </form>
+
       </div>
     );
   }
