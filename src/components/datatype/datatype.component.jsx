@@ -55,9 +55,10 @@ class DataTypeSelector extends React.Component {
         </form>
 
         <form>
+        <label form="numpoints">Number of points</label>
             <input type="number" value={this.props.numberPoints} id="numpoints"
               onChange={this.handleNumberPointsChange}  name="numpoints"/>
-            <label form="numpoints">Number of points</label>
+            
         </form>
 
       </div>

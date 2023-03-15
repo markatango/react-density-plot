@@ -52,7 +52,8 @@ class DisplayGraphs extends Component {
     }
 
     return (
-      <div>
+      <React.Fragment>
+          <div>
         <div className="row">
           <div className="col-12">
          <h2 style={{textAlign: "center"}}>Kernel Density Estimator Demo</h2> 
@@ -72,6 +73,8 @@ class DisplayGraphs extends Component {
           </div>
         </div>
       </div>
+      </React.Fragment>
+      
     );
   }
 }
